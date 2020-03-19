@@ -164,8 +164,74 @@ console.log(!false); // true
 console.log(!0); // true
 console.log(!1); // false
 
+let newString = "hi my name is Andrei!";
+console.log(newString);
+console.log(newString.length)
+console.log(newString.indexOf("hi")); // 0
+console.log(newString.indexOf("my")); // 3
+console.log(newString.indexOf("Andrei")); // 14
+console.log(newString.indexOf("Andrei!")); // 14
+console.log(newString.indexOf("hello world")); // -1
+console.log(newString.indexOf("my  name")); // -1
 
+console.log(newString.includes("my")); // true
+console.log(newString.includes("me")); // true
+console.log(newString.includes("mo")); // false
 
+console.log(newString[0]); // h
+console.log(newString[1]); // i
+console.log(newString[2]); // space
+console.log(newString[5]); // space
+console.log(newString[30]); // undefined
 
+console.log(newString.toLocaleUpperCase());
+console.log(newString.toLocaleLowerCase());
 
+const myName = "my " + "name " + "is " + "Andrei!";
+console.log(myName);
 
+const myFirstName = "Andrei";
+const myLastName = "Virko";
+
+// интерполяция и шаблоная строка
+let fullName;
+fullName = `${myFirstName} ${myLastName}`;
+console.log(fullName);
+
+fullName = "${myFirstName} ${myLastName}";
+console.log(fullName);
+
+let num1 = 3;
+console.log(typeof num1);
+
+let str1 = "3";
+console.log(typeof str1);
+
+let result;
+result = num1 + str1;
+console.log(result);
+console.log(typeof result);
+
+let num2 = 5;
+let str2 = "5";
+
+result = num1 + num2 + str1 + str2;
+console.log(result); // 835
+console.log(typeof result);
+
+result = num1 + str1 + num2 + str2;
+console.log(result); // 3355
+console.log(typeof result);
+
+let num3 = 10;
+console.log(typeof num3); // number
+result = 10 + ""; 
+console.log(result); // 10 
+console.log(typeof result); // string
+
+console.log(typeof String(num3));
+let str3 = "5";
+result = + str3;
+console.log(result);
+console.log(typeof result);
+console.log( typeof Number(str3));
