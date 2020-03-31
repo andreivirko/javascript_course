@@ -274,21 +274,107 @@ msg = "what,time,is,it?";
 newArr = msg.split(","); // разделит строку на элементы по ,
 console.log(newArr);
 
-// поиск элементов в массиве
+// способы поиска элементов в массиве
 
-units[0];
+console.log(units);
+console.log(units[0]); // 6 - мы узнали значение элемента обратившись к массиву через индекс искомого элемента
 
+console.log(units.indexOf("6")); // 0 - возвращает порядковый номер индекса искомого элемента, если он есть
+console.log(units.indexOf("alpha")); // -1 - возвращает такой ответ, если элемент в массиве не найден
 
+console.log(units.includes("beta")); // true - если есть
+console.log(units.includes("alpha")); // false - если нет
 
+let welcome = "welcome to my world!";
+console.log(welcome);
+console.log(typeof welcome);
 
+console.log(welcome.includes("to")); // true
+console.log(welcome.includes("lc")); // true
+console.log(welcome.includes(" t")); // true
+console.log(welcome.includes(" ")); // true
+console.log(welcome.includes("!")); // true
+console.log(welcome.includes("?")); // false
+console.log(welcome.includes("WORLD")); // false
 
+// проверка условий 
+const fruit = "rasberry";
 
+if (fruit === "rasberry" || fruit === "strawberry") {
+    console.log("this is red berry");
+}
 
+const redFruits = ["cherry", "rasberry", "cranberry"];
 
+if (redFruits.includes(fruit)) {
+    console.log("this is red berry");
+} else {
+    console.log("this is not red berry");
+}
 
+// копиривание массивов
 
+let numList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // исходный массив
+console.log("numList", numList);
+let sliceList = numList.slice(); // скопировать полностью исходный массив
+console.log("sliceList", sliceList);
+sliceList.pop();
+console.log("sliceList", sliceList);
+console.log("numList", numList);
 
+let partSliceList = numList.slice(0, 6);
+console.log("partSliceList", partSliceList);
 
+partSliceList = numList.slice(-3);
+console.log(partSliceList);
 
+partSliceList = numList.slice(-5);
+console.log(partSliceList);
 
+partSliceList = numList.slice(-1);
+console.log(partSliceList);
 
+// швецарский нож .splice();
+
+console.log("numList", numList);
+
+// удаление элементов (1 - начало, 2 - количество элементов)
+
+let spliceArr = numList.splice(0, 2);
+console.log("spliceArr", spliceArr); // [0, 1] - создан новый массив из удаленных элементов удаленного массива
+console.log("numList", numList); // [2, 3, 4, 5, 6, 7, 8, 9] - мутированный исходный массив
+
+// вставка элементов (1 - начало, всегда 0, все элементы, которые надо вставить)
+
+spliceArr = numList.splice(0, 0, "2", 3, "4");
+console.log("spliceArr", spliceArr); // массив из добавлених элементов не создаеться
+console.log("numList", numList); // исходный массив мутировал
+
+spliceArr = numList.splice(9, 0, "js", "html");
+console.log("spliceArr", spliceArr); // массив из добавлених элементов не создаеться
+console.log("numList", numList); // исходный массив мутировал
+
+// замена элементов (1 - начало, 2 - количество элементов, котоые надо заменить, а после них, надо перечислить элеенты которые надо вставить на замену)
+
+spliceArr = numList.splice(0, 3, 0, 1);
+
+console.log("spliceArr", spliceArr); // массив из замененных элементов не создаеться
+console.log("numList", numList); // исходный массив мутировал 
+
+spliceArr = numList.splice(4, 2, "7", "9");
+
+console.log("spliceArr", spliceArr); // массив из замененных элементов не создаеться
+console.log("numList", numList); // исходный массив мутировал 
+
+spliceArr = numList.splice(-1, 2, "7", "9");
+
+console.log("spliceArr", spliceArr); // массив из замененных элементов не создаеться
+console.log("numList", numList); // исходный массив мутировал 
+
+// обьеденение массивов
+
+const Arr1 = ["hello"];
+const Arr2 = ["world"];
+const Arr3 = ["!"];
+const newArr1 = Arr1.concat(Arr2).concat(Arr3);
+console.log(newArr1);
