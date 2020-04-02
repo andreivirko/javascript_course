@@ -71,21 +71,43 @@ console.log(doubleResults);
 // В обратной последовательности в обоих случаях
 // Выведи в консоль массивы evenResults и oddResults
 
-// let evenResults = [];
-// let oddResults = [];
+let evenResults = [];
+let oddResults = [];
 
-// for (let k = 0; k < doubleResults.length; k += 1) {
-//     console.log(doubleResults[k]);
-//     if (doubleResults[k] % 2 === 0) {
-//         evenResults = 
-//         console.log();
-//     } else {
-//         console.log();
-//     }
-// }
- 
+for (let k = 0; k < doubleResults.length; k += 1) {
+    console.log(doubleResults[k]);
+    if (doubleResults[k] % 2 === 0) {
+        evenResults.unshift(doubleResults[k]);
+    } else {
+        oddResults.unshift(doubleResults[k]);
+    }
+}
+
+console.log(oddResults); // [611, 67, 3, 17, 15]
+console.log(evenResults); // [532, 98, 4]
+
+// сначало 3, 2, потом 1
+// [1, 2, 3] 
+
 // ============== 7 =========================================
 // Объедините массивы oddResults и evenResults из задания 6, записав их в новый массив AllResults
 // Перебери новый массив AllResults и выбери только те элементы массива,
 // которые содержат 1 и запиши эти элементы в новый массив includesOne
 // "обрати внимание, что массив includesOne должен содержать элемента с типом number, а не string!
+
+let AllResults = oddResults.concat(evenResults);
+console.log(AllResults);
+
+let includesOne = [];
+
+for (let j = 0; j < AllResults.length; j += 1) {
+    // console.log(AllResults[j]);
+    let stringElement = AllResults[j].toString();
+    // console.log(stringElement);
+    if (stringElement.includes(1)) {
+        console.log(stringElement);
+        includesOne.push(+stringElement);
+    }
+}
+
+console.log(includesOne);
