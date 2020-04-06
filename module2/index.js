@@ -378,3 +378,184 @@
 // const Arr3 = ["!"];
 // const newArr1 = Arr1.concat(Arr2).concat(Arr3);
 // console.log(newArr1);
+
+// функции
+// FUNCTION EXPRESSION (with variable)
+// ОБЬЯВЛЕНИЕ ФУНКЦИИ
+//                  (параметры)
+const add = function(a, b, c) {
+    return (a + b + c);
+};
+// вызов функции - приведение функции в дейстивия
+//                (аргументы)
+const result = add(7, 23, 24); // записал в переменную вызов функции
+
+console.log(result);
+//             (аргументы)
+console.log(add(1, 2, 3)); // 6
+
+const toBuyProducts = function(meat, milk, bread) {
+    console.log(meat, milk, bread);
+};
+
+//           (аргументы)
+toBuyProducts("chiken", "cow", "white");
+toBuyProducts(undefined, "cow", "white");
+
+// // АРГУМЕНТЫ - ЭТО ЗНАЧЕНИЯ ПАРАМЕТРОВ
+
+// параметры по умолчанию (дефолтные параметры)
+
+let toBuyNewProducts = function(meat = "chiken", milk = "простокавашина", bread) {
+    console.log(meat, milk, bread);
+};
+
+toBuyNewProducts(undefined, undefined, "white");
+toBuyNewProducts("pork", undefined, "white");
+
+// // ПОРЯОК ВЫПОЛНЕНИЯ КОДА
+
+// тут мы обьявляем функции
+const fn1 = function() {
+    console.log("начала выполняться новая первая функция!");
+    fn2();
+    console.log("продолжение выполнения первой функции!");
+}
+
+const fn2 = function() {
+    console.log("выполняется вторая функция!");
+};
+
+// а тут мы выполняем код
+
+console.log("начато выполнение основного кода!"); // done
+fn1();
+console.log("продолжение выполнение основного кода!");
+
+// Псевдомассив arguments
+// принимает все переданные аргументы (значение параметров) при вызове функции 
+// не зависимо от их количества и знаечения
+// перебирается с помощью цикла for of (for), что позволяет проводить операции
+// с каждым аргументом, указанным в () при вызове функции
+// Псевдомассив - это тоже массив, только он не имеет большенства методов мвссивов
+
+const sumOfTests = function() {
+    let total = 0;
+    for (const argument of arguments) {
+        console.log("псевдомассив", arguments);
+        // console.log("значение аргумента на каждой итерации", argument);
+        total += argument;
+        // console.log("сумма аргументов на каждой итерации", total);
+    }
+    return console.log("общая сумма", total);
+}
+
+sumOfTests(3, 2, 1);
+sumOfTests(3, 2, 1, 4, 2);
+sumOfTests(3, 2, 1, 4, 2, 5, 10);
+
+const array = [1, 2, 3];
+console.log(array);
+
+// ПРЕОБРАЗОВАНИЕ ПСЕВОДОМАССИВА arguments  В НОРМАЛЬНЫЙ МАССИВ
+
+const fn3 = function() {
+    console.log("псевдомассив", arguments);
+    const args = Array.from(arguments); // преобразование в массив 
+    console.log("преобразованный массив", args); 
+}
+
+fn3(undefined, true, null, false, 7, "hey", [1, 2, 3]);
+
+// REST (...args) - это оператор розширения 
+
+const fn4 = function(...args) {
+    console.log("полноценный массив аргументов", args);
+}
+
+
+fn4(1, 2, 3, 10, 4);
+
+// guard clause
+
+const takeCash = function (amount, balance) {
+    if (amount === 0) {
+        console.log("enter the sum");
+    } else if (amount > balance) { 
+        console.log("sorry no money");
+    } else {
+        console.log("please take your cash");
+    }
+}
+
+takeCash(0, 3000);
+takeCash(5000, 3000);
+takeCash(1000, 3000);
+
+const takeCash1 = function(amount1, balance1) {
+    if (amount1 === 0) {
+        console.log("1 - enter the sum");
+        return; // без этого слова, будут выводится ложныу данные
+    } 
+    
+    if (amount1 > balance1) { 
+        console.log("1 - sorry no money");
+        return; // без этого слова, будут выводится ложныу данные
+    } 
+        console.log("1 - please take your cash");
+}
+
+takeCash1(0, 3000);
+takeCash1(5000, 3000);
+takeCash1(1000, 3000);
+
+// function decloration (without variable)
+// такую функцию можно вызвать до ее обьявления 
+// это обусловлено феноменом хостинг (всплытие)
+
+
+functionDecloration(1, 2, 3); // function decloration  можно вызвать до ее обьявления
+function functionDecloration(a, b, c) {
+    return console.log("function decloration", a + b + c);
+}
+
+functionDecloration(1, 2, 3);
+
+// в отличие от: 
+
+// functionExpression(3, 4, 6); // function expression нельзя вызвать до ее обьявления 
+const functionExpression = function(a, b, c) {
+    return console.log("function expression", a + b + c);
+}
+
+functionExpression(3, 4, 6);
+
+// GLOBAL SCOPE & LOCAL SCOPE (FUNCTION SCOPE & BLOCK SCOPE)
+
+// ========== GLOBAL SCOPE ========== //  
+
+function relative() {
+
+    // ======== LOCAL FUNCTION relative() SCOPE ======== // 
+
+    if (true) {
+    
+    // LOCAL BLOCK SCOPE 
+    
+        console.log();
+    }
+
+    // ======== LOCAL FUNCTION relative() SCOPE ======== // 
+
+    function child() {
+
+    // LOCAL FUNCTION child() SCOPE
+    
+        console.log();        
+    }
+
+    // ======== LOCAL FUNCTION relative() SCOPE ======== // 
+
+}
+
+// ========== GLOBAL SCOPE ========== //  
