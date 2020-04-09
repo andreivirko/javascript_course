@@ -18,14 +18,14 @@
 
 // // }
 
-// // let student = {
-// //     name: "Bob",
-// //     lastName: "Dylan",
-// //     age: 17,
-// //     language: language,
-// //     passExam: true,
-// //     size: ["s", "m", "l"]
-// // } 
+let student = {
+    name: "Bob",
+    lastName: "Dylan",
+    age: 17,
+    language: language,
+    passExam: true,
+    size: ["s", "m", "l"]
+} 
 
 // // console.log(student);
 
