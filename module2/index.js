@@ -379,6 +379,7 @@
 // const newArr1 = Arr1.concat(Arr2).concat(Arr3);
 // console.log(newArr1);
 
+<<<<<<< HEAD
 // функции
 // FUNCTION EXPRESSION (with variable)
 // ОБЬЯВЛЕНИЕ ФУНКЦИИ
@@ -559,3 +560,5 @@ function relative() {
 }
 
 // ========== GLOBAL SCOPE ========== //  
+=======
+>>>>>>> b28b8018afcdcc6707e9cc5396b275faa277d2a6
