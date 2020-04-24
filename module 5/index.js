@@ -171,3 +171,136 @@ console.log(John.sales); // 200
 console.log(John.sale("mandarins")); // manager John, sold mandarins
 console.log(John.sale("iPhone")); // manager John, sold iPhone
 console.log(John.sales); // 202
+
+// prototypes
+
+const parent = {language1: "HTML"};
+const child = {language2: "CSS"};
+console.log(parent, child); // {language1: "HTML"} {language2: "CSS"}
+
+child.__proto__ = parent;
+console.log(child.language1); // HTML
+
+const child2 = {
+    language1: "js",
+    language2: "css",
+};
+
+console.log(child2); // {language1: "js", language2: "css"}
+
+child2.__proto__ = parent;
+console.log(child2.language1); // js
+console.log(child2.language2); // css
+
+// prototype method
+
+// Object.create(obj);
+
+// ======================== //
+
+const animal = {eats: true};
+const dog = Object.create(animal);
+console.log(dog); // {}
+
+dog.barks = true;
+console.log(dog.barks); // true
+console.log(dog.eats); // true
+
+// ======================= // 
+
+// динамическая диспетчеризация (dynamic dispatch) или делегация (delegation)
+
+// Механизм поиска свойства работает до первого совпадения. 
+// Интерпретатор ищет свойство по имени в объекте, если не находит, 
+// то обращается к свойству [[Prototype]], т.е. переходит по ссылке к объекту-прототипу, 
+// а затем и прототипу прототипа.
+
+
+for (const key in dog) { // // вернет все унаследованные ключи
+    console.log(key); // barks, eats
+};
+
+for (const key in dog) {
+    if (!dog.hasOwnProperty(key)) continue; // // вернет только личные ключи
+    console.log("oon prototype", key); // oon prototype, // barks
+};
+
+const dogKeys = Object.keys(dog); // вернет массив личных ключей объекта
+
+const Guest = function(name, room) {
+    this.name = name;
+    this.room = room;
+};
+
+console.dir(Guest); // ƒ Guest(name, room)
+
+// !!!!!!!!!!!!!!!!! //
+
+// У стрелочных функций нет свойства prototype, потому что их нельзя вызвать через new, и, 
+// соотвественно, в нем нет необходимости.
+
+// !!!!!!!!!!!!!!!!! // 
+
+console.log(Guest.prototype); // {constructor: ƒ}
+
+const ferrarri = new Guest("ferrarri", 4);
+console.log(ferrarri); // Guest {name: "ferrarri", room: 4}
+
+Guest.prototype.showGuestInfo = function() {
+    console.log(`name: ${this.name}, room: ${this.room}`);
+};
+
+ferrarri.showGuestInfo(); // name: ferrarri, room: 4
+
+// property constructor
+
+Guest.prototype = {constructor: "guest"};
+
+// Наследование и конструкторы
+
+const Hero = function(name, xp) {
+    this.name = name;
+    this.xp = xp;
+};
+
+// конструктор базового класса героя, добавим в prototype какой-то метод
+
+Hero.prototype.gameXp = function(amount) {
+    console.log(`${this.name}, gained ${amount}, game points`);
+    this.xp += amount;                                                                                           
+};
+
+const deadpool = new Hero("deadpool", 100);
+console.log(deadpool); // {name: "deadpool", xp: 100}
+deadpool.gameXp(500); // deadpool, gained 500, game points
+
+const Warrior = function(name, xp, weapon) {
+           // this это будущий экземпляр Warrior
+    Hero.call(this, name, xp);
+    this.weapon = weapon;
+};
+
+Warrior.prototype = Object.create(Hero.prototype);
+Warrior.prototype.constructor = Warrior;
+
+Warrior.prototype.attack = function() {
+    console.log(`${this.name}, attacks with ${this.weapon}`);
+};
+
+const Andrei1 = new Warrior("Andrei", 150, "sword");
+console.log(Andrei1); // Warrior {name: "Andrei", xp: 150, weapon: "sword"}
+Andrei1.attack(); // Andrei, attacks with sword
+
+Andrei1.gameXp(100); // Andrei, gained 100, game points
+
+class Guest1 {
+    constructor(name, room) {
+        this.name = name;
+        this.room = room;
+    };
+};
+
+const andrei = new Guest1("andrei", 10);
+console.log(andrei); // Guest1 {name: "andrei", room: 10}
+console.log(andrei instanceof Guest1); // true
+console.log(andrei instanceof Object); // true
