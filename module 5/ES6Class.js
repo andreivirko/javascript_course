@@ -126,3 +126,106 @@ const fn = function(callback) {
 // привязке контекста
 
 fn(hero5.gameXp) // 155
+
+// НАСЛЕДОВАНИЕ
+
+// class Child extends Parent {
+
+// }
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    };
+    move() {
+        console.log(`i am ${this.name} moving`);
+    };
+};
+
+class Dog extends Animal {
+    constructor(name, bree) {
+        super(name);
+        this.bree = bree;
+    };
+    bark() {
+        console.log(`woof`);
+    };
+    moveAndMakeSound() {
+        super.move();
+        this.bark();
+    };
+};
+
+const dog = new Dog("james", "husky"); 
+console.log(dog);
+
+dog.move();
+dog.bark();
+dog.moveAndMakeSound();
+
+// Приватные и защищённые методы и свойства
+
+// Приватные и защищённые методы и свойства
+// Внутренний интерфейс – методы и свойства, доступные из других методов класса, 
+// но не снаружи класса. 
+
+// Внешний интерфейс – методы и свойства, доступные снаружи класса.
+
+class Auto {
+    fuel = 0; // публичное свойство
+    _oil = 1;
+    set oil(value) {
+        if (value < 0) throw new Error("отрицательное значение");
+        this._oil = value;
+    };
+    get oil() {
+        return this._oil;
+    }
+    constructor(speed) {
+        this.speed = speed; // публичное свойство
+        console.log(speed)
+    };
+};
+
+const mazda = new Auto(200);
+console.log(mazda);
+
+mazda.fuel = 20; // публичное свойство
+mazda.speed = 170; // публичное свойство
+// mazda.oil = -2;
+// console.log(mazda.oil); // Auto.set oil [as oil]
+
+// свойство только для чтения
+
+class Moto {
+    constructor(power) {
+        this._power = power;
+    };
+    get power() {
+        this._power;
+    };
+};
+
+const harley = new Moto(200);
+console.log(harley);
+
+// harley.power = 100; // Cannot set property 
+// power of #<Moto> which has only a getter
+
+// приватные свойства
+
+// class CoffeeMachine {
+//     #water = 200;
+//     // #checkWater(value) {
+//     //     if (value < 0) throw new Error("отрицательное значение");
+//     //     if (value > this.#water) throw new Error ("слишком много воды");
+//     // };
+// };
+
+// const delonghi = new CoffeeMachine();
+// delonghi.#water = 1000;
+// // delonghi.#checkWater();
+// console.log(delonghi);
+
+
+
