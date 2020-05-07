@@ -364,3 +364,57 @@ console.log("after sort", alpha.sort());
 const clients = ["Jane", "Jack", "Cecile", "Arlo", "Susan"];
 console.log("before sort:", clients);
 console.log("after sort", clients.sort());
+
+// Свой порядок сортировки
+
+const newUsers1 = [
+{
+    name: "James",
+    age: 10,
+},
+{
+    name: "Jack",
+    age: 16,
+},
+{
+    name: "Aliah",
+    age: 3,
+},
+{
+    name: "Susan",
+    age: 24,
+},
+{
+    name: "Katherina",
+    age: 83,
+},
+];
+
+const sortByAge = (a, b) => a.age - b.age;
+console.log(newUsers1.sort(sortByAge));
+
+const sortByAge1 = (a, b) => b.age - a.age;
+console.log(newUsers1.sort(sortByAge1));
+
+const sortByName = (a, b) => a.name - b.name;
+console.log(newUsers1.sort(sortByName));
+
+const sortByName1 = (a, b) => b.name - a.name;
+console.log(newUsers1.sort(sortByName1));
+
+// Цепочки методов массива
+
+const myNums = [3, 5, 8, 99, 56, 43, 9, 76, 56, 70];
+let myFilteredNums = myNums.filter(num => num % 2 === 0);
+console.log(myFilteredNums);
+
+const doubleNums = myFilteredNums.map(num => num * 2);
+console.log(doubleNums);
+
+const reverseNums = doubleNums.reverse();
+console.log(reverseNums);
+
+// ============================================================ //
+
+const result = myNums.filter(num => num % 2 === 0).map(num => num * 2).reverse();
+console.log(result);
