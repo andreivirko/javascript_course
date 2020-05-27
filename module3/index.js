@@ -309,3 +309,4 @@ console.log(colors);
 const rgb2 = [1, 15, 150];
 const [, green1] = rgb2;
 console.log(green1);
+
