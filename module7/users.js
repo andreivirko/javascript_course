@@ -1,0 +1,42 @@
+export default [
+    {
+        name: "James",
+        lastName: "Charles",
+        avatar: "./image/1.jpeg",
+        age: "21",
+        height: "182",
+        eyeColor: "blue",
+    },
+    {
+        name: "Lucas",
+        lastName: "Graham",
+        avatar: "./image/2.jpeg",
+        age: "19",
+        height: "178",
+        eyeColor: "black",
+    },
+    {
+        name: "oliver",
+        lastName: "Kulik",
+        avatar: "./image/3.jpeg",
+        age: "34",
+        height: "180",
+        eyeColor: "brown",
+    },
+    {
+        name: "Megan",
+        lastName: "Ray",
+        avatar: "./image/4.jpeg",
+        age: "18",
+        height: "165",
+        eyeColor: "green",
+    },
+    {
+        name: "Cristiano",
+        lastName: "Ronaldo",
+        avatar: "./image/5.jpeg",
+        age: "33",
+        height: "190",
+        eyeColor: "brown",
+    },
+];
