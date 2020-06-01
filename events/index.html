@@ -13,6 +13,10 @@
 
     </header>
     <main>
+        <div class="container">
+            <button type="button" data-action="clear" class="btn">Clear Input</button>
+            <div class="log-list"></div>
+          </div>      
         <div>
             <button id="main-button" class="first-button">first button</button>
             <button id="secondary-button" class="second-button">second button</button>
@@ -22,7 +26,7 @@
             <button class="btn" data-action="remove">Удалить слушателя</button>
             <button id="newBtn" class="btn">CLICK ME!</button>
         </div>
-        <form class="form">
+        <form class="form" id="user-form">
             <input type="text" placeholder="Login">
             <input type="password" placeholder="Password">
             <button type="submit" class="btn">Зарегистрироваться</button>
